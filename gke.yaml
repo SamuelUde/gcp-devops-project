@@ -3,6 +3,7 @@ kind: Deployment
 metadata:
   name: gcp-devops-gke
 spec:
+  replicas: 1
   selector:
     matchLabels:
       app: gcp
@@ -13,9 +14,9 @@ spec:
     spec:
       containers:
       - name: gcp-devops-gke
-        image: gcr.io/refined-clarity-385311/gcpdevops
+        image: gcr.io/refined-clarity-385311/gcpdevops:latest 
         ports:
-        - containerPort: 5000
+          - containerPort: 5000
         env:
           - name: PORT
             value: "5000"
@@ -28,9 +29,9 @@ metadata:
   namespace: gcp-devops-prod
 spec:
   selector:
-    app: "gcp"
+    app: gcp
   ports:
   - port: 80
     targetPort: 5000
-  type: "NodePort"
+  type: NodePort
 
