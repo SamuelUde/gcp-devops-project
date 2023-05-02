@@ -28,10 +28,10 @@ metadata:
   name: gcp-devops-gke-service
   namespace: gcp-devops-prod
 spec:
-  type: LoadBalancer
   selector:
     app: gcp
   ports:
   - port: 80
     targetPort: 5000
+  type: NodePort
 
